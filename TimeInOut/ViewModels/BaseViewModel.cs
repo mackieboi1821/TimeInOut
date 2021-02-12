@@ -1,26 +1,40 @@
 ﻿using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace TimeInOut.ViewModels
 {
     public class BaseViewModel : Screen
     {
+        public string checker = "No";
+
         protected IWindowManager _windowManager;
 
         public string _globalVariable;
-
+        
         public SqlConnection _conn;
-
+        public SqlCommand sc;
+        public SqlDataReader dt;
 
         private string _passkey;
         private string _employeeId;
   
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        
         public void OnPasswordChanged(PasswordBox source)
         {
             _passkey = source.Password;
@@ -42,12 +56,36 @@ namespace TimeInOut.ViewModels
             _conn = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True");
 
         }
-
+        public void ShowInfo()
+        {
+            try
+            {
+                if (_conn.State == ConnectionState.Closed)
+                {
+                    
+                }
+                String query = "SELECT * FROM tb_employees WHERE employee_id='" + EmployeeId + "'";
+                sc = new SqlCommand(query, _conn);
+                dt = sc.ExecuteReader();
+                while (dt.Read())
+                {
+                    Name = dt.GetValue(2).ToString();
+                }
+                sc.Dispose();
+                _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         public void Cancel()
         {
+         
             TryClose();
+            //ShowInfo();
         }
 
-       
+
     }
 }

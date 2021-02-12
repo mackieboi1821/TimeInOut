@@ -11,6 +11,8 @@ namespace TimeInOut.Connections
 
     public class MySqlConnection: BaseViewModel
     {
+
+
         public MySqlConnection()
         {
            

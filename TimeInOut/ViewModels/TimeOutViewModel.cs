@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,27 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using TimeInOut.Views;
 
 namespace TimeInOut.ViewModels
 {
-    public class TimeInViewModel: BaseViewModel
+    public class TimeOutViewModel : BaseViewModel
     {
-        public TimeInViewModel()
+        public TimeOutViewModel()
         {
 
         }
-  
-        public void TimeInEnter()
+        public void TimeOutEnter()
         {
             try
 
             {
-             
+
                 if (_conn.State == ConnectionState.Closed)
                 {
-                    _conn.Open(); 
+                    _conn.Open();
                 }
 
                 String query = "SELECT COUNT(1) FROM tb_employees WHERE employee_id=@employee_id AND PassKey=@Passkey";
@@ -35,18 +31,18 @@ namespace TimeInOut.ViewModels
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@employee_id", EmployeeId);
                 sqlCmd.Parameters.AddWithValue("@passkey", Passkey);
-                int count = Convert.ToInt32(sqlCmd.ExecuteScalar()); 
-                if(count == 1)
+                int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
+                if (count == 1)
                 {
                     Cancel();
                     checker = "No";
-                    MessageBox.Show("Time in successful!");
+                    MessageBox.Show("Time out successful!");
                     ShowInfo();
                 }
                 else
                 {
                     MessageBox.Show("Error");
-            
+
                 }
 
 
@@ -61,7 +57,5 @@ namespace TimeInOut.ViewModels
                 _conn.Close();
             }
         }
-     
-
     }
 }

@@ -16,17 +16,14 @@ using System.Windows.Shapes;
 namespace TimeInOut.Views
 {
     /// <summary>
-    /// Interaction logic for TimeInView.xaml
+    /// Interaction logic for TimeOutView.xaml
     /// </summary>
-    public partial class TimeInView : Window
+    public partial class TimeOutView : Window
     {
-        public TimeInView()
+        public TimeOutView()
         {
             InitializeComponent();
         }
-
-      
-
         private void Checker(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

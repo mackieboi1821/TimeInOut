@@ -81,15 +81,19 @@
     </Compile>
     <Compile Include="Connections\MySqlConnection.cs" />
     <Compile Include="Models\TimeInModel.cs" />
-    <Compile Include="Utilities\StringChecker.cs" />
+    <Compile Include="Utilities\TimeInPost.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\TimeInViewModel.cs" />
+    <Compile Include="ViewModels\TimeOutViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeInView.xaml.cs">
       <DependentUpon>TimeInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeOutView.xaml.cs">
+      <DependentUpon>TimeOutView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TimeInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimeOutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
