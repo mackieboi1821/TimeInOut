@@ -13,7 +13,6 @@ namespace TimeInOut.ViewModels
 {
     public class BaseViewModel : Screen
     {
-        public string checker = "No";
 
         protected IWindowManager _windowManager;
 
@@ -25,7 +24,7 @@ namespace TimeInOut.ViewModels
 
         private string _passkey;
         private string _employeeId;
-  
+
         private string _name;
 
         public string Name
@@ -34,7 +33,9 @@ namespace TimeInOut.ViewModels
             set { _name = value; }
         }
 
-        
+
+
+
         public void OnPasswordChanged(PasswordBox source)
         {
             _passkey = source.Password;
@@ -62,14 +63,14 @@ namespace TimeInOut.ViewModels
             {
                 if (_conn.State == ConnectionState.Closed)
                 {
-                    
+                    _conn.Open();
                 }
                 String query = "SELECT * FROM tb_employees WHERE employee_id='" + EmployeeId + "'";
                 sc = new SqlCommand(query, _conn);
                 dt = sc.ExecuteReader();
                 while (dt.Read())
                 {
-                    Name = dt.GetValue(2).ToString();
+                    _name = dt.GetValue(2).ToString();
                 }
                 sc.Dispose();
                 _conn.Close();
@@ -79,13 +80,29 @@ namespace TimeInOut.ViewModels
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
         public void Cancel()
         {
-         
+        
             TryClose();
-            //ShowInfo();
+         
         }
 
+        //public void inputOperation()
+        //{
+        //    if(Operation == "timein")
+        //    {
+
+        //    }
+        //}
+        //public void SqlInDate()
+        //{
+        //  DateTime time = DateTime.Now;
+        //  string format = "yyyy-MM-dd";
+        //  SqlCommand cmd = new SqlCommand ("INSERT INTO tb_records  ([TimeInHour]) VALUES ('"+ time.ToString(format) + "') WHERE employee_id = '"+EmployeeId+"'",_conn);
+        //  cmd.ExecuteNonQuery();
+        //}
 
     }
 }

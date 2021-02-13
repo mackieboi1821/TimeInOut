@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Column="1" Grid.Row="1" Background="#FFAEECFF">
-            <ScrollViewer Background="#FFB9FFF8">
+            <ScrollViewer Background="White">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31"/>
@@ -42,19 +42,19 @@
                             <ColumnDefinition Width="29*"/>
                             <ColumnDefinition Width="484*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="WELCOME" FontSize="100"  FontWeight="Bold" TextAlignment="Center" FontFamily="Gill Sans MT Condensed" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="WELCOME" FontSize="100"  FontWeight="Bold" TextAlignment="Center" FontFamily="Franklin Gothic Demi" Grid.ColumnSpan="2"/>
                     </Grid>
 
                     <!--Image-->
                     <Grid Grid.Column="1" Grid.Row="2">
-                        <Image Source="C:\Users\Jhon Mher\source\repos\Project\Project\Images\image.png" Height="245" Width="400" />
+                        <Image Source="pack://application:,,,/Images/Account.png" Height="245" Width="400" />
                     </Grid>
 
                     <!--Data-->
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                             <StackPanel Margin="10" >
-                                <TextBlock x:Name="Name" Text="NAME" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
+                                <TextBlock Text="{Binding Path=Name, Mode=OneWay}" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
                                 <TextBlock x:Name="Id" Text="ID" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana"  />
                                 <TextBlock x:Name="Bday" Text="BIRTHDAY" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
                             </StackPanel>
@@ -62,13 +62,13 @@
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="5">
                         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="20">
-                            <TextBlock Text="TIME-IN" FontSize="30" TextAlignment="Center" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="{Binding Operation}" Text="TIME-IN" FontSize="30" TextAlignment="Center" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                 </Grid>
             </ScrollViewer>
         </Grid>
-        <Grid Grid.Row="1" Background="White">
+        <Grid Grid.Row="1" Background="#FF4BDBE2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="80"/>
@@ -86,7 +86,7 @@
                 <Grid>
                     <Button
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      Content="TIME IN" Width="230"  Height="60" Background="#FFB9FFF8" 
+                      Content="TIME IN" Width="230"  Height="60" Background="White" 
                       BorderBrush="#FF12C1B2" FontFamily="Verdana" FontWeight="Bold" 
                       materialDesign:ButtonAssist.CornerRadius="15"
                       FontSize="20" Foreground="#DD000000" cal:Message.Attach="[Event Click] = [Action TimeIn]"/>
@@ -98,7 +98,7 @@
                 <Grid>
                     <Button
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      Content="TIME OUT" Width="230"  Height="60" Background="#FFB9FFF8" 
+                      Content="TIME OUT" Width="230"  Height="60" Background="White" 
                       BorderBrush="#FF12C1B2" FontFamily="Verdana" FontWeight="Bold" FontSize="20" 
                       materialDesign:ButtonAssist.CornerRadius="15"
                       Foreground="#DD000000"  cal:Message.Attach="[Event Click] = [Action TimeOut]" />
@@ -110,7 +110,7 @@
                 <Grid>
                     <Button
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      Content="Settings" Width="230"  Height="60" Background="#FFB9FFF8" 
+                      Content="Settings" Width="230"  Height="60" Background="White" 
                       materialDesign:ButtonAssist.CornerRadius="15"
                       BorderBrush="#FF12C1B2" FontFamily="Verdana" FontWeight="Bold" FontSize="20" 
                       Foreground="#DD000000" Margin="5,25,5,5" />
@@ -123,7 +123,7 @@
                     ToolTip="CLICK ME!"
                     Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                     Margin="0,0,195,0" 
-                    materialDesign:ButtonAssist.CornerRadius="15" Background="#FFB9FFF8">
+                    materialDesign:ButtonAssist.CornerRadius="15" Background="White">
                     <materialDesign:PackIcon Kind="InformationVariant"/>
                   
                 </Button>

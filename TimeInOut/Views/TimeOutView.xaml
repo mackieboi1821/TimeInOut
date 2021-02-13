@@ -38,7 +38,7 @@
                          FontFamily="Champagne &amp; Limousines" FontSize="18" PreviewTextInput="Checker"/>
                 <!--Password-->
                 <PasswordBox cal:Message.Attach="[Event PasswordChanged] = [Action OnPasswordChanged($source)]" 
-                         materialDesign:HintAssist.Hint="Passkey" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10"
+                         materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10"
                          FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>

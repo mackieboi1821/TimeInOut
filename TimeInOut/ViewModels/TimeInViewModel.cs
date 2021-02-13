@@ -18,7 +18,8 @@ namespace TimeInOut.ViewModels
         {
 
         }
-  
+        
+
         public void TimeInEnter()
         {
             try
@@ -38,14 +39,17 @@ namespace TimeInOut.ViewModels
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar()); 
                 if(count == 1)
                 {
-                    Cancel();
-                    checker = "No";
+                  
                     MessageBox.Show("Time in successful!");
+
                     ShowInfo();
+                
+                    Cancel();
+               
                 }
                 else
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Invalid User");
             
                 }
 

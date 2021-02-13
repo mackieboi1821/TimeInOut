@@ -18,9 +18,7 @@ namespace TimeInOut.ViewModels
         public void TimeOutEnter()
         {
             try
-
             {
-
                 if (_conn.State == ConnectionState.Closed)
                 {
                     _conn.Open();
@@ -35,17 +33,14 @@ namespace TimeInOut.ViewModels
                 if (count == 1)
                 {
                     Cancel();
-                    checker = "No";
                     MessageBox.Show("Time out successful!");
-                    ShowInfo();
+                    //ShowInfo();
                 }
                 else
                 {
                     MessageBox.Show("Error");
 
                 }
-
-
 
             }
             catch (Exception ex)
