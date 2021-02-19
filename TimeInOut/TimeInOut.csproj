@@ -81,6 +81,8 @@
     </Compile>
     <Compile Include="Connections\MySqlConnection.cs" />
     <Compile Include="Models\TimeInModel.cs" />
+    <Compile Include="Utilities\AuthenticatedTimeOut.cs" />
+    <Compile Include="Utilities\BoolToOperator.cs" />
     <Compile Include="Utilities\TimeInPost.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

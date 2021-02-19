@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace TimeInOut.ViewModels
@@ -15,32 +9,47 @@ namespace TimeInOut.ViewModels
         {
 
         }
+   
+
+        #region Username
+        private string _UserName;
+        public string UserName
+        {
+            get { return _UserName; }
+            set
+            {
+                _UserName = value;
+                NotifyOfPropertyChange(() => UserName);
+            }
+        }
+        #endregion
+
+        #region Passkey
+        private string _Passkey;
+        public string Passkey
+        {
+            get { return _Passkey; }
+            set
+            {
+                _Passkey = value;
+                NotifyOfPropertyChange(() => Passkey);
+            }
+        }
+        #endregion
+
         public void TimeOutEnter()
         {
             try
             {
-                if (_conn.State == ConnectionState.Closed)
+                if (TimeOutUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName, _Passkey) > 0)
                 {
-                    _conn.Open();
-                }
 
-                String query = "SELECT COUNT(1) FROM tb_employees WHERE employee_id=@employee_id AND PassKey=@Passkey";
-                SqlCommand sqlCmd = new SqlCommand(query, _conn);
-                sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.Parameters.AddWithValue("@employee_id", EmployeeId);
-                sqlCmd.Parameters.AddWithValue("@passkey", Passkey);
-                int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                if (count == 1)
-                {
+                    MessageBox.Show("Time out successful!");                  
                     Cancel();
-                    MessageBox.Show("Time out successful!");
-                    //ShowInfo();
                 }
                 else
-                {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Invalid User");
 
-                }
 
             }
             catch (Exception ex)
@@ -49,7 +58,7 @@ namespace TimeInOut.ViewModels
             }
             finally
             {
-                _conn.Close();
+                    
             }
         }
     }

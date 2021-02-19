@@ -9,6 +9,10 @@ namespace TimeInOut.Models
 {
     public class TimeInModel: BaseViewModel
     {
+
+
+        public int MyProperty { get; set; }
+
         //private string _employeeId;
 
         //public string EmployeeId
