@@ -54,9 +54,8 @@
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                             <StackPanel Margin="10" >
-                                <TextBlock Text="Name" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
-                                <TextBlock x:Name="Id" Text="ID" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana"  />
-                                <TextBlock x:Name="Bday" Text="BIRTHDAY" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
+                                <TextBlock Text="NAME" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana" />
+                                <TextBlock Text="TIME" FontSize="40" HorizontalAlignment="Center" FontFamily="Verdana"  />
                             </StackPanel>
                         </Border>
                     </Grid>

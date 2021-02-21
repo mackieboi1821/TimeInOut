@@ -11,8 +11,7 @@ namespace TimeInOut.Models
     {
 
 
-        public int MyProperty { get; set; }
-
+     
         //private string _employeeId;
 
         //public string EmployeeId

@@ -44,13 +44,21 @@ namespace TimeInOut.ViewModels
                 if (TimeOutUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName, _Passkey) > 0)
                 {
 
-                    MessageBox.Show("Time out successful!");                  
-                    Cancel();
+                    if (PostOutUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName) > 0)
+                    {
+                        MessageBox.Show("Time out successful!");
+                        Cancel();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Error writing in database");
+                        Cancel();
+                    }
+
+                    
                 }
                 else
                     MessageBox.Show("Invalid User");
-
-
             }
             catch (Exception ex)
             {

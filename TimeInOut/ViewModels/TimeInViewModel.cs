@@ -5,6 +5,8 @@ namespace TimeInOut.ViewModels
 {
     public class TimeInViewModel: BaseViewModel
     {
+       
+
         public TimeInViewModel()
         {
 
@@ -34,16 +36,52 @@ namespace TimeInOut.ViewModels
         }
         #endregion
 
+        #region TimeIn
+        private string _TimeInHour;
+
+        public string TimeInHour
+        {
+            get { return _TimeInHour; }
+            set 
+            {
+                _TimeInHour = value;
+                NotifyOfPropertyChange(() => TimeInHour);
+            }
+        }
+        private string _TimeInDate;
+
+        public string TimeInDate
+        {
+            get { return _TimeInDate; }
+            set
+            {
+                _TimeInDate = value;
+                NotifyOfPropertyChange(() => TimeInDate);
+            }
+        }
+
+
+
+        #endregion
 
         public void TimeInEnter()
         {
             try
             {
-                if (TimeInUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName, _Passkey) > 0)
+                if (UserAuthenticate(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName, _Passkey) > 0 )
                 {
-                    MessageBox.Show("Time in successful!");
 
-                    Cancel();
+                    if (PostInUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True",_UserName) > 0)
+                    {
+                        MessageBox.Show("Time in successful!");
+                        Cancel();
+                    }else
+                    {
+                        MessageBox.Show("Invalid Error writing in database");
+                        Cancel();
+                    }
+
+
                 }
                 else
                     MessageBox.Show("Invalid User");

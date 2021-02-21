@@ -84,6 +84,7 @@
     <Compile Include="Utilities\AuthenticatedTimeOut.cs" />
     <Compile Include="Utilities\BoolToOperator.cs" />
     <Compile Include="Utilities\TimeInPost.cs" />
+    <Compile Include="Utilities\ToRecordTimeIn.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\TimeInViewModel.cs" />
