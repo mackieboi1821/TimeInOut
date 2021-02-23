@@ -56,8 +56,6 @@ namespace TimeInOut.Utilities
             int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
 
             return count;
-
-
         }
 
     }

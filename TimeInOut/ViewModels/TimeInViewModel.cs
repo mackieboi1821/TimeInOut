@@ -11,6 +11,7 @@ namespace TimeInOut.ViewModels
         {
 
         }
+        DateTime now = DateTime.Now;
 
         #region Username
         private string _UserName;
@@ -36,33 +37,6 @@ namespace TimeInOut.ViewModels
         }
         #endregion
 
-        #region TimeIn
-        private string _TimeInHour;
-
-        public string TimeInHour
-        {
-            get { return _TimeInHour; }
-            set 
-            {
-                _TimeInHour = value;
-                NotifyOfPropertyChange(() => TimeInHour);
-            }
-        }
-        private string _TimeInDate;
-
-        public string TimeInDate
-        {
-            get { return _TimeInDate; }
-            set
-            {
-                _TimeInDate = value;
-                NotifyOfPropertyChange(() => TimeInDate);
-            }
-        }
-
-
-
-        #endregion
 
         public void TimeInEnter()
         {
@@ -73,15 +47,20 @@ namespace TimeInOut.ViewModels
 
                     if (PostInUser(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True",_UserName) > 0)
                     {
-                        MessageBox.Show("Time in successful!");
-                        Cancel();
-                    }else
+
+                        if (GettingName(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=TimeinoutDB;Integrated Security=True", _UserName) > 0)
+                        {                    
+                            MessageBox.Show("Time in successful!");
+                            Cancel();
+
+                        }
+
+                    }
+                    else
                     {
                         MessageBox.Show("Invalid Error writing in database");
                         Cancel();
                     }
-
-
                 }
                 else
                     MessageBox.Show("Invalid User");

@@ -84,12 +84,34 @@ namespace TimeInOut.Utilities
             try
             {
                 string query = "INSERT INTO tb_records (employee_id, TimeDate, TimeInOut, TimeType) VALUES (@employee_id, GETDATE(),convert(varchar(8), getdate(), 108), 'OUT')";
-
                 SqlCommand sqlCmd = new SqlCommand(query, _conn);
-
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@employee_id", EmployeeId);
                 sqlCmd.ExecuteScalar();
+                return 1;
+            }
+            catch (SqlException _ex)
+            {
+                return 0;
+            }
+        }
+        public int GetName(string EmployeeId)
+        {
+            try
+            {
+                string query = "SELECT * FROM tb_employees WHERE employee_id=@employee_id";
+                SqlCommand sqlCmd = new SqlCommand(query, _conn);
+                sqlCmd.Parameters.AddWithValue("@employee_id", EmployeeId);
+                SqlDataReader read = sqlCmd.ExecuteReader();
+
+
+                while (read.Read())
+                {
+
+                    EmployeeName = (read["lastname"].ToString());
+
+                }
+                read.Close();
 
                 return 1;
             }
@@ -98,5 +120,6 @@ namespace TimeInOut.Utilities
                 return 0;
             }
         }
+
     }
 }
